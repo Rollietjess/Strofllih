@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
-        Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "test" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
