@@ -160,4 +160,7 @@ fabric.properties
 
 !/gradle/wrapper/gradle-wrapper.jar
 
+# Android
+google-services.json
+
 # End of https://www.gitignore.io/api/kotlin,firebase,androidstudio
