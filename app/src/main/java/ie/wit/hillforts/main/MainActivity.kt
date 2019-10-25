@@ -3,36 +3,44 @@ package ie.wit.hillforts.main
 import android.content.Intent
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Bundle
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ie.wit.hillforts.LoginActivity
 import ie.wit.hillforts.R
+import ie.wit.hillforts.activities.HillfortAdapter
 import ie.wit.hillforts.activities.HillfortsActivity
-import ie.wit.hillforts.models.PlacemarkModel
+import ie.wit.hillforts.models.HillfortsModel
+import kotlinx.android.synthetic.main.card_hillfort.view.*
+import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity() {
     var fbAuth = FirebaseAuth.getInstance()
-    val placemarks = ArrayList<PlacemarkModel>()
+//    val placemarks = ArrayList<PlacemarkModel>()
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        app = application as MainApp
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
         Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
 
         fab.setOnClickListener() {
             // Handler code here.
-
             val intent = Intent(this@MainActivity, HillfortsActivity::class.java)
-            startActivity(intent);
+            startActivity(intent)
         }
 
+        val layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = HillfortAdapter(app.hillforts)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
