@@ -1,4 +1,10 @@
 package ie.wit.hillforts.models
 
-data class HillfortsModel(var title: String = "",
-                          var description: String = "")
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class HillfortsModel(var id: Long = 0,
+                          var title: String = "",
+                          var description: String = "",
+                          var image: String = "") : Parcelable
