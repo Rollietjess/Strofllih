@@ -1,18 +1,22 @@
-package ie.wit.hillforts
+package ie.wit.hillforts.main
 
 import android.content.Intent
 import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.FirebaseAuth
 import android.widget.Toast
+import ie.wit.hillforts.LoginActivity
+import ie.wit.hillforts.R
+import ie.wit.hillforts.activities.HillfortsActivity
+import ie.wit.hillforts.models.PlacemarkModel
 
 
 class MainActivity : AppCompatActivity() {
     var fbAuth = FirebaseAuth.getInstance()
+    val placemarks = ArrayList<PlacemarkModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,11 +24,13 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
-        Toast.makeText(this, "test" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fab.setOnClickListener() {
+            // Handler code here.
+
+            val intent = Intent(this@MainActivity, HillfortsActivity::class.java)
+            startActivity(intent);
         }
 
     }

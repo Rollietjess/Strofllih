@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import android.view.View
 import android.widget.*
+import ie.wit.hillforts.main.MainActivity
 
 class LoginActivity : AppCompatActivity() {
     private val TAG = "LoginActivity"
