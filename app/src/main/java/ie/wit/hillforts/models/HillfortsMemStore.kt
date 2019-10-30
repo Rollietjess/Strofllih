@@ -16,6 +16,10 @@ class HillfortsMemStore : HillfortsStore, AnkoLogger {
         return hillforts
     }
 
+    override fun findSpecific(): List<HillfortsModel> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun create(hillfort: HillfortsModel) {
         hillfort.id = getId()
         hillforts.add(hillfort)

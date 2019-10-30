@@ -15,13 +15,21 @@ import ie.wit.hillforts.activities.HillfortsActivity
 import ie.wit.hillforts.activities.HillfortsListener
 import ie.wit.hillforts.models.HillfortsModel
 import kotlinx.android.synthetic.main.content_main.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
+import com.google.firebase.auth.FirebaseUser
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 
 
-class MainActivity : AppCompatActivity(), HillfortsListener {
+
+
+class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
     var fbAuth = FirebaseAuth.getInstance()
-//    val placemarks = ArrayList<PlacemarkModel>()
     lateinit var app: MainApp
+    val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +37,7 @@ class MainActivity : AppCompatActivity(), HillfortsListener {
         setSupportActionBar(toolbar)
         app = application as MainApp
 
-        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+
         Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
 
         fab.setOnClickListener() {
@@ -40,7 +48,8 @@ class MainActivity : AppCompatActivity(), HillfortsListener {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
+//        recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
+        loadHillforts()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -62,11 +71,19 @@ class MainActivity : AppCompatActivity(), HillfortsListener {
     }
 
     fun signOut(){
-        fbAuth.signOut()
-        startActivity(
-            Intent(this@MainActivity,
-                LoginActivity::class.java)
-        )
+//        fbAuth.signOut()
+        FirebaseAuth.getInstance().signOut()
+        val intentLogout = Intent(this@MainActivity, LoginActivity::class.java)
+//        intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intentLogout)
+
+
+        info("user id logout: " + currentFirebaseUser?.uid)
+//        startActivity(
+//            Intent(this@MainActivity,
+//                LoginActivity::class.java)
+//        )
+        Toast.makeText(this, "Logout Successfully!", Toast.LENGTH_SHORT).show()
     }
 
     override fun onHillfortsClick(hillfort: HillfortsModel) {
@@ -74,7 +91,18 @@ class MainActivity : AppCompatActivity(), HillfortsListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        recyclerView.adapter?.notifyDataSetChanged()
+//        recyclerView.adapter?.notifyDataSetChanged()
+        loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loadHillforts() {
+        showHillforts(app.hillforts.findSpecific())
+//        showHillforts(app.hillforts.findAll())
+    }
+
+    fun showHillforts (hillforts: List<HillfortsModel>) {
+        recyclerView.adapter = HillfortAdapter(hillforts, this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 }

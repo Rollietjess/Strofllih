@@ -5,6 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class HillfortsModel(var id: Long = 0,
+                          var userid: String = "",
                           var title: String = "",
                           var description: String = "",
                           var image: String = "",
