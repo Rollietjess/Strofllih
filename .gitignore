@@ -166,4 +166,6 @@ google-services.json
 app/src/release/res/values/google_maps_api.xml
 app/src/debug/res/values/google_maps_api.xml
 
+google_maps_api.xml
+
 # End of https://www.gitignore.io/api/kotlin,firebase,androidstudio
