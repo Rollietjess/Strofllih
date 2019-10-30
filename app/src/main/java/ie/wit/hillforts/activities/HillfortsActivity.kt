@@ -11,10 +11,12 @@ import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.helpers.showImagePicker
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.models.Location
 import kotlinx.android.synthetic.main.activity_hillforts.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 class HillfortsActivity : AppCompatActivity(), AnkoLogger {
@@ -22,6 +24,7 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
     var hillfort = HillfortsModel()
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
+    val LOCATION_REQUEST = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +37,6 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
 
         if (intent.hasExtra("hillfort_edit")) {
             edit = true
-            btnAdd.setText(R.string.save_hillfort)
             hillfort = intent.extras?.getParcelable<HillfortsModel>("hillfort_edit")!!
             placemarkTitle.setText(hillfort.title)
             description.setText(hillfort.description)
@@ -42,6 +44,7 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             if (hillfort.image != null) {
                 chooseImage.setText(R.string.change_hillfort_image)
             }
+            btnAdd.setText(R.string.save_hillfort)
         }
 
         btnAdd.setOnClickListener() {
@@ -63,6 +66,16 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
 
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
+        }
+
+        hillfortLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
+            if (hillfort.zoom != 0f) {
+                location.lat = hillfort.lat
+                location.lng = hillfort.lng
+                location.zoom = hillfort.zoom
+            }
+            startActivityForResult(intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
         }
     }
 
@@ -88,6 +101,14 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
                     hillfort.image = data.getData().toString()
                     hillfortImage.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage.setText(R.string.change_hillfort_image)
+                }
+            }
+            LOCATION_REQUEST -> {
+                if (data != null) {
+                    val location = data.extras?.getParcelable<Location>("location")!!
+                    hillfort.lat = location.lat
+                    hillfort.lng = location.lng
+                    hillfort.zoom = location.zoom
                 }
             }
         }
