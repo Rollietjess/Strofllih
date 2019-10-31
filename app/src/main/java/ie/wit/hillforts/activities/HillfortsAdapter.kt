@@ -38,6 +38,9 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortsModel>,
         fun bind(hillfort: HillfortsModel,  listener : HillfortsListener) {
             itemView.hillfortTitle.text = hillfort.title
             itemView.description.text = hillfort.description
+            if(hillfort.dateVisited != ""){
+                itemView.date_visited.text = hillfort.dateVisited
+            }
             itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
             itemView.setOnClickListener { listener.onHillfortsClick(hillfort) }
         }

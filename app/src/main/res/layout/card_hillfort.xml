@@ -35,5 +35,12 @@
             android:layout_below="@id/hillfortTitle"
             android:layout_toEndOf="@+id/imageIcon"/>
 
+        <TextView
+            android:id="@+id/date_visited"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
