@@ -15,7 +15,8 @@
     <string name="button_addPlacemark">Add Hillfort</string>
     <string name="hint_placemarkTitle">Hillfort Title</string>
     <string name="hint_placemarkDescription">Description </string>
-    <string name="menu_cancelPlacemark">Cancel</string>
+    <string name="menu_cancelHillfort">Cancel</string>
+    <string name="menu_deleteHillfort">Delete</string>
     <string name="enter_hillfort_title"> Please enter a Hillfort Title </string>
     <string name="save_hillfort"> Save Hillfort </string>
     <string name="button_addImage"> Add Image </string>
@@ -24,4 +25,5 @@
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
     <string name="account">Account</string>
+    <string name="toast_delete">The hillfort is successfully deleted</string>
 </resources>

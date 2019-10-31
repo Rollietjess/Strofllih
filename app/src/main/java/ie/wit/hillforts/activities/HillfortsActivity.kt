@@ -89,6 +89,11 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_cancel -> {
                 finish()
             }
+            R.id.item_delete -> {
+                app.hillforts.delete(hillfort.copy())
+                toast(R.string.toast_delete)
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

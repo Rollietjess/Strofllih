@@ -5,4 +5,5 @@ interface HillfortsStore {
     fun findSpecific(): List<HillfortsModel>
     fun create(hillfort: HillfortsModel)
     fun update(hillfort: HillfortsModel)
+    fun delete(hillfort: HillfortsModel)
 }
