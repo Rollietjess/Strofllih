@@ -39,7 +39,6 @@ class HillfortJSONStore : HillfortsStore, AnkoLogger {
 
     override fun findSpecific() : MutableList<HillfortsModel> {
         val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
-        info("user id: " + currentFirebaseUser!!.uid)
         var list = hillforts.filter { it.userid == currentFirebaseUser!!.uid }
         return list.toMutableList()
     }
@@ -62,6 +61,7 @@ class HillfortJSONStore : HillfortsStore, AnkoLogger {
             foundHillfort.lat = hillfort.lat
             foundHillfort.lng = hillfort.lng
             foundHillfort.zoom = hillfort.zoom
+            foundHillfort.visited = hillfort.visited
         }
         serialize()
     }

@@ -40,6 +40,7 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             hillfort = intent.extras?.getParcelable<HillfortsModel>("hillfort_edit")!!
             placemarkTitle.setText(hillfort.title)
             description.setText(hillfort.description)
+            checkbox_visited.isChecked = hillfort.visited
             hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
             if (hillfort.image != null) {
                 chooseImage.setText(R.string.change_hillfort_image)
@@ -50,6 +51,7 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener() {
             hillfort.title = placemarkTitle.text.toString()
             hillfort.description = description.text.toString()
+            hillfort.visited = checkbox_visited.isChecked
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
