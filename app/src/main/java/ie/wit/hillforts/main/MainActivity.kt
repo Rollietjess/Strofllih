@@ -22,8 +22,7 @@ import com.google.firebase.auth.FirebaseUser
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
+import ie.wit.hillforts.activities.AccountActivity
 
 
 class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
@@ -66,24 +65,27 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
             R.id.action_settings -> true
             R.id.logout_app -> { signOut()
                 return true}
+            R.id.account -> { account()
+                return true}
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     fun signOut(){
-//        fbAuth.signOut()
         FirebaseAuth.getInstance().signOut()
         val intentLogout = Intent(this@MainActivity, LoginActivity::class.java)
-//        intentLogout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intentLogout)
 
 
         info("user id logout: " + currentFirebaseUser?.uid)
-//        startActivity(
-//            Intent(this@MainActivity,
-//                LoginActivity::class.java)
-//        )
+
         Toast.makeText(this, "Logout Successfully!", Toast.LENGTH_SHORT).show()
+    }
+
+    fun account(){
+        val intentAccount = Intent(this@MainActivity, AccountActivity::class.java)
+        startActivity(intentAccount)
+
     }
 
     override fun onHillfortsClick(hillfort: HillfortsModel) {

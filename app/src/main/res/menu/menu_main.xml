@@ -9,14 +9,14 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/logout_app"
-        android:orderInCategory="100"
-        android:title="@string/logout"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/account"
         android:orderInCategory="100"
         android:title="@string/account"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/logout_app"
+        android:orderInCategory="100"
+        android:title="@string/logout"
         app:showAsAction="never" />
 </menu>
