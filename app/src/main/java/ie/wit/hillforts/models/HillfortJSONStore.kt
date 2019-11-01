@@ -62,8 +62,14 @@ class HillfortJSONStore : HillfortsStore, AnkoLogger {
             foundHillfort.lng = hillfort.lng
             foundHillfort.zoom = hillfort.zoom
             foundHillfort.visited = hillfort.visited
-            foundHillfort.dateVisited = hillfort.dateVisited
+
             foundHillfort.additionalNotes = hillfort.additionalNotes
+
+            if(hillfort.visited){
+                foundHillfort.dateVisited = hillfort.dateVisited
+            } else {
+                foundHillfort.dateVisited = ""
+            }
         }
         serialize()
     }
@@ -81,5 +87,18 @@ class HillfortJSONStore : HillfortsStore, AnkoLogger {
     private fun deserialize() {
         val jsonString = read(context, JSON_FILE)
         hillforts = Gson().fromJson(jsonString, listType)
+    }
+
+    override fun getTotalHillforts(): Int {
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        var list = hillforts.filter { it.userid == currentFirebaseUser!!.uid }
+        return list.size
+    }
+
+    override fun getVisitedHillforts(): Int {
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        var listVisited = hillforts.filter { it.userid == currentFirebaseUser!!.uid && it.visited }
+        info("list: " + hillforts )
+        return listVisited.size
     }
 }

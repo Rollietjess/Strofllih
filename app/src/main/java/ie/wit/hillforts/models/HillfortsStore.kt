@@ -6,4 +6,6 @@ interface HillfortsStore {
     fun create(hillfort: HillfortsModel)
     fun update(hillfort: HillfortsModel)
     fun delete(hillfort: HillfortsModel)
+    fun getTotalHillforts(): Int
+    fun getVisitedHillforts(): Int
 }

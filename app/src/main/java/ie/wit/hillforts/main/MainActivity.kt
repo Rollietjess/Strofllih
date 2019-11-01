@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
         app = application as MainApp
 
 
-        Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
 
         fab.setOnClickListener() {
             // Handler code here.
@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item?.itemId) {
-            R.id.action_settings -> true
             R.id.logout_app -> { signOut()
                 return true}
             R.id.account -> { account()

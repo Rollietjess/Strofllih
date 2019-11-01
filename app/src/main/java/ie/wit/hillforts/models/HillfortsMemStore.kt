@@ -9,6 +9,13 @@ internal fun getId(): Long {
     return lastId++
 }
 class HillfortsMemStore : HillfortsStore, AnkoLogger {
+    override fun getVisitedHillforts(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getTotalHillforts(): Int {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     val hillforts = ArrayList<HillfortsModel>()
 

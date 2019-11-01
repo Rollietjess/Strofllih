@@ -84,9 +84,13 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             hillfort.title = placemarkTitle.text.toString()
             hillfort.description = description.text.toString()
             hillfort.visited = checkbox_visited.isChecked
-            hillfort.dateVisited = text_view_date_1.text.toString()
+
+            if(checkbox_visited.isChecked){
+                hillfort.dateVisited = text_view_date_1.text.toString()
+            }
+
             hillfort.additionalNotes = additionalNotes.text.toString()
-    info("test: " + additionalNotes.text.toString())
+
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
