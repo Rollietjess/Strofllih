@@ -63,9 +63,10 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             placemarkTitle.setText(hillfort.title)
             description.setText(hillfort.description)
             checkbox_visited.isChecked = hillfort.visited
+            additionalNotes.setText(hillfort.additionalNotes)
             hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
 
-            if (hillfort.image != null) {
+            if (hillfort.image != "" && hillfort.image.length > 10) {
                 chooseImage.setText(R.string.change_hillfort_image)
             }
 
@@ -84,12 +85,8 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             hillfort.description = description.text.toString()
             hillfort.visited = checkbox_visited.isChecked
             hillfort.dateVisited = text_view_date_1.text.toString()
-//            if(hillfort.visited == true){
-//                hillfort.dateVisited = LocalDate.now().toString()
-//            } else {
-//                hillfort.dateVisited = ""
-//            }
-
+            hillfort.additionalNotes = additionalNotes.text.toString()
+    info("test: " + additionalNotes.text.toString())
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
