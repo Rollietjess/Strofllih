@@ -11,7 +11,6 @@ import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.google.android.material.navigation.NavigationView
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImage
 import ie.wit.hillforts.helpers.readImageFromPath
@@ -25,9 +24,10 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
+import android.os.Build
+
+
 
 class HillfortsActivity : AppCompatActivity(), AnkoLogger {
 
@@ -184,6 +184,15 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        menu.findItem(R.id.item_delete).isVisible = false
+        if (intent.hasExtra("hillfort_edit")) {
+            invalidateOptionsMenu()
+            menu.findItem(R.id.item_delete).isVisible = true
+        }
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
