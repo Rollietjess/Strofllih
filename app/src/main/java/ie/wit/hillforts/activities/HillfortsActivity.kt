@@ -75,12 +75,12 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
                 button_date_1.isVisible = true
                 text_view_date_1.setText(hillfort.dateVisited)
             }
-            btnAdd.setText(R.string.save_hillfort)
+//            btnAdd.setText(R.string.save_hillfort)
         }
 
 
 //        On click listener of the add hillfort button
-        btnAdd.setOnClickListener() {
+        fab_save.setOnClickListener() {
             hillfort.title = placemarkTitle.text.toString()
             hillfort.description = description.text.toString()
             hillfort.visited = checkbox_visited.isChecked
@@ -99,10 +99,12 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
                 } else {
                     app.hillforts.create(hillfort.copy())
                 }
+
+                info("add Button Pressed: $placemarkTitle")
+                setResult(AppCompatActivity.RESULT_OK)
+                finish()
             }
-            info("add Button Pressed: $placemarkTitle")
-            setResult(AppCompatActivity.RESULT_OK)
-            finish()
+
         }
 
         checkbox_visited.setOnClickListener() {
