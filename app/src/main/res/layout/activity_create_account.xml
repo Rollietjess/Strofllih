@@ -33,7 +33,7 @@
         android:id="@+id/btn_register"
         android:theme="@style/viewCustom"
         android:layout_below="@id/et_password"
-        android:background="@color/colorAccent"
+        android:background="@color/black_leather_jacket"
         android:text="@string/create_act"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
