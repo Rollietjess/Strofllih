@@ -76,7 +76,11 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
             checkbox_visited.isChecked = hillfort.visited
             additionalNotes.setText(hillfort.additionalNotes)
             hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
-            extra_image1?.isVisible = true
+
+            if (hillfort.image != "" && hillfort.image.length > 10) {
+                extra_image1?.isVisible = true
+                chooseImage.setText(R.string.change_hillfort_image)
+            }
 
             if (hillfort.image1 != "" && hillfort.image1.length > 10) {
                 extra_image1?.isVisible = true
@@ -95,10 +99,6 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
                 hillfortImage3.setImageBitmap(readImageFromPath(this, hillfort.image3))
             }
 
-
-            if (hillfort.image != "" && hillfort.image.length > 10) {
-                chooseImage.setText(R.string.change_hillfort_image)
-            }
 
             if(hillfort.visited){
                 text_view_date_1.isVisible = true

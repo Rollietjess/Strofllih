@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3C5233</color>
-    <color name="colorPrimaryDark">#264027</color>
-    <color name="colorAccent">#D81B60</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
-    <color name="cordovan">#8E3B46</color>
-    <color name="rifle_green">#3C5233</color>
-    <color name="black_leather_jacket">#264027</color>
-    <color name="grey">#e8e8e8</color>
 
 
+    <color name="primaryColor">#37474f</color>
+
+    <color name="primaryLightColor">#62727b</color>
+
+    <color name="primaryDarkColor">#102027</color>
+
+    <color name="secondaryColor">#d32f2f</color>
+
+    <color name="secondaryLightColor">#ff6659</color>
+
+    <color name="secondaryDarkColor">#9a0007</color>
+
+    <color name="primaryTextColor">#37474f</color>
+
+    <color name="secondaryTextColor">#37474f</color>
 </resources>

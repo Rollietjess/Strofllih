@@ -10,35 +10,11 @@
         android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <!--        <com.google.android.material.appbar.AppBarLayout-->
-        <!--            android:id="@+id/appBarLayout"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="@color/colorAccent"-->
-        <!--            android:fitsSystemWindows="true"-->
-        <!--            app:elevation="0dip"-->
-        <!--            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-        <!--            <androidx.appcompat.widget.Toolbar-->
-        <!--                android:id="@+id/toolbarAdd"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                app:titleTextColor="@color/colorPrimary" />-->
-        <!--        </com.google.android.material.appbar.AppBarLayout>-->
-
-        <!--        <androidx.appcompat.widget.Toolbar-->
-        <!--            android:id="@+id/toolbarAdd"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="?attr/actionBarSize"-->
-        <!--            android:background="?attr/colorPrimary"-->
-        <!--            app:layout_anchor="@+id/appBarLayout"-->
-        <!--            app:layout_anchorGravity="center"-->
-        <!--            app:popupTheme="@style/AppTheme.PopupOverlay" />-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -51,73 +27,85 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/placemarkTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="8dp"
-                    android:autofillHints=""
-                    android:hint="@string/hint_placemarkTitle"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/description"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:hint="@string/hint_placemarkDescription"
-                    android:inputType="text"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp" />
+                    android:hint="@string/hint_placemarkTitle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/placemarkTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/hint_hillfortDescription">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
 
                 <CheckBox
                     android:id="@+id/checkbox_visited"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginTop="10dp"
                     android:text="@string/visited" />
 
-                <TextView
-                    android:id="@+id/text_view_date_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:textSize="23dp" />
-
-                <Button
-                    android:id="@+id/button_date_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:layout_toEndOf="@+id/text_view_date_1"
-                    android:text="Change Date" />
-
-                <EditText
-                    android:id="@+id/additionalNotes"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:hint="@string/additional_notes"
-                    android:inputType="textMultiLine" />
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentTop="true">
+
+                    <TextView
+                        android:id="@+id/text_view_date_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="12dp"
+                        android:layout_marginRight="20dp"
+                        android:textSize="17dp" />
+
+                    <Button
+                        android:id="@+id/button_date_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/text_view_date_1"
+                        android:text="Change Date" />
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/additional_notes">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/additionalNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/chooseImage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/secondaryColor"
                     android:text="@string/button_addImage"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
@@ -127,8 +115,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <RelativeLayout
@@ -152,8 +138,8 @@
                         android:layout_height="110dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="10dp"
-                        android:padding="8dp"
                         android:layout_toRightOf="@id/hillfortImage1"
+                        android:padding="8dp"
                         app:srcCompat="@mipmap/ic_launcher" />
 
                     <ImageView
@@ -162,8 +148,8 @@
                         android:layout_height="110dp"
                         android:layout_marginLeft="8dp"
                         android:layout_marginTop="10dp"
-                        android:padding="8dp"
                         android:layout_toRightOf="@id/hillfortImage2"
+                        android:padding="8dp"
                         app:srcCompat="@mipmap/ic_launcher" />
                 </RelativeLayout>
 
@@ -171,27 +157,25 @@
                     android:id="@+id/hillfortLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@color/colorAccent"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/secondaryColor"
                     android:stateListAnimator="@null"
                     android:text="@string/button_location"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
-<!--                <Button-->
-<!--                    android:id="@+id/btnAdd"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_margin="16dp"-->
-<!--                    android:background="@color/rifle_green"-->
-<!--                    android:paddingTop="8dp"-->
-<!--                    android:paddingBottom="8dp"-->
-<!--                    android:stateListAnimator="@null"-->
-<!--                    android:text="@string/button_addPlacemark"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="16sp" />-->
+                <!--                <Button-->
+                <!--                    android:id="@+id/btnAdd"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_margin="16dp"-->
+                <!--                    android:background="@color/rifle_green"-->
+                <!--                    android:paddingTop="8dp"-->
+                <!--                    android:paddingBottom="8dp"-->
+                <!--                    android:stateListAnimator="@null"-->
+                <!--                    android:text="@string/button_addPlacemark"-->
+                <!--                    android:textColor="@color/white"-->
+                <!--                    android:textSize="16sp" />-->
 
 
             </LinearLayout>
@@ -208,7 +192,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:tint="@android:color/white"
+        android:tint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_check" />
