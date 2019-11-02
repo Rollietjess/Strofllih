@@ -96,7 +96,11 @@ class CreateAccountActivity : AppCompatActivity() {
 
     private fun updateUserInfoAndUI() {
         //start next activity
-        val intent = Intent(this@CreateAccountActivity, MainActivity::class.java)
+        Toast.makeText(
+            this@CreateAccountActivity, "Account successfully created. You can now log in.",
+            Toast.LENGTH_SHORT
+        ).show()
+        val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }
