@@ -16,28 +16,28 @@ import ie.wit.hillforts.activities.HillfortsListener
 import ie.wit.hillforts.models.HillfortsModel
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
-import com.google.firebase.auth.FirebaseUser
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import ie.wit.hillforts.activities.AccountActivity
 
 
 class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
-    var fbAuth = FirebaseAuth.getInstance()
     lateinit var app: MainApp
-    val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
 
+    override fun onStart() {
+        super.onStart()
+        var mAuth = FirebaseAuth.getInstance()
+        if (mAuth.getCurrentUser() == null) {
+            val intentBack = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intentBack)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
         app = application as MainApp
 
-
-//        Toast.makeText(this, "" + currentFirebaseUser!!.uid, Toast.LENGTH_SHORT).show()
 
         fab.setOnClickListener() {
             // Handler code here.
@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-//        recyclerView.adapter = HillfortAdapter(app.hillforts.findAll(), this)
         loadHillforts()
     }
 
@@ -75,16 +74,12 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
         val intentLogout = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(intentLogout)
 
-
-        info("user id logout: " + currentFirebaseUser?.uid)
-
         Toast.makeText(this, "Logout Successfully!", Toast.LENGTH_SHORT).show()
     }
 
     fun account(){
         val intentAccount = Intent(this@MainActivity, AccountActivity::class.java)
         startActivity(intentAccount)
-
     }
 
     override fun onHillfortsClick(hillfort: HillfortsModel) {
@@ -92,14 +87,12 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        recyclerView.adapter?.notifyDataSetChanged()
         loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun loadHillforts() {
         showHillforts(app.hillforts.findSpecific())
-//        showHillforts(app.hillforts.findAll())
     }
 
     fun showHillforts (hillforts: List<HillfortsModel>) {

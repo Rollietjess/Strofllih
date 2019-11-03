@@ -7,14 +7,14 @@
     <!--    LOGIN-->
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last lame</string>
     <string name="login_title">Login</string>
     <string name="create_act">Create Account</string>
 
     <string name="button_addPlacemark">Add Hillfort</string>
-    <string name="hint_placemarkTitle">Hillfort Title</string>
-    <string name="hint_placemarkDescription">Description </string>
+    <string name="hint_placemarkTitle">Hillfort title</string>
+    <string name="hint_hillfortDescription">Description</string>
     <string name="menu_cancelHillfort">Cancel</string>
     <string name="menu_deleteHillfort">Delete</string>
     <string name="enter_hillfort_title"> Please enter a Hillfort Title </string>
@@ -26,6 +26,7 @@
     <string name="title_activity_map">Map</string>
     <string name="account">Account</string>
     <string name="toast_delete">The hillfort is successfully deleted</string>
-    <string name="visited">visited this hillfort</string>
+    <string name="visited">visited</string>
     <string name="additional_notes">Additional notes</string>
+    <string name="fullname">%1$s %2$s</string >
 </resources>

@@ -7,105 +7,174 @@
     android:layout_height="match_parent"
     tools:context="ie.wit.hillforts.activities.AccountActivity">
 
-
-    <TableLayout
-        android:id="@+id/tl_data"
+    <TextView
+        android:id="@+id/account_info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="First Name : "
-                android:padding="8dp"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/tv_first_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textSize="16sp" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Last Name : "
-                android:padding="8dp"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/tv_last_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textSize="16sp" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="User Email : "
-                android:padding="8dp"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/tv_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textSize="16sp" />
-        </TableRow>
-    </TableLayout>
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="25dp"
+        android:gravity = "center"
+        android:textColor="@color/secondaryColor"
+        android:text="User information" />
+
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_info"
+        android:layout_marginTop="13dp"
+        android:padding="8dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/tv_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name"
+        android:padding="8dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:textColor="@color/secondaryColor" />
+
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_first_name"
+        android:layout_marginTop="13dp"
+        android:padding="8dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:text="Email" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/email"
+        android:padding="8dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:textColor="@color/secondaryColor"/>
+
+<!--    <TableLayout-->
+<!--        android:id="@+id/tl_data"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_below="@id/account_info"-->
+<!--        android:layout_height="wrap_content">-->
+<!--        <TableRow>-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="First Name : "-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="16sp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_first_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="16sp" />-->
+<!--        </TableRow>-->
+<!--        <TableRow>-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Last Name : "-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="16sp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_last_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="16sp" />-->
+<!--        </TableRow>-->
+<!--        <TableRow>-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="User Email : "-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="16sp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/tv_email"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="16sp" />-->
+<!--        </TableRow>-->
+<!--    </TableLayout>-->
 
     <View
         android:id="@+id/divider2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@id/tl_data"
+        android:layout_below="@id/tv_email"
+        android:layout_marginTop="13dp"
         android:background="?android:attr/listDivider" />
+
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/divider2"
-        android:padding="8dp"
-        android:textSize="22sp"
-        android:text="Statistics" />
-
-    <TableLayout
-        android:id="@+id/tl_statistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView2">
+        android:layout_below="@id/divider2"
+        android:layout_marginTop="13dp"
+        android:padding="8dp"
+        android:textSize="25dp"
+        android:gravity = "center"
+        android:textColor="@color/secondaryColor"
+        android:text="Statistics" />
 
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total hillforts : "
-                android:padding="8dp"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/tv_total_hillforts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textSize="16sp" />
-        </TableRow>
 
-        <TableRow>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total visited : "
-                android:padding="8dp"
-                android:textSize="16sp" />
-            <TextView
-                android:id="@+id/tv_total_visited"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:textSize="16sp" />
-        </TableRow>
-    </TableLayout>
+    <TextView
+        android:id="@+id/total_hillforts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_marginTop="13dp"
+        android:padding="8dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:text="Total hillforts" />
+
+    <TextView
+        android:id="@+id/tv_total_hillforts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/total_hillforts"
+        android:padding="8dp"
+        android:textSize="23dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:textColor="@color/secondaryColor"/>
+
+
+    <TextView
+        android:id="@+id/total_visited"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_total_hillforts"
+        android:layout_marginTop="13dp"
+        android:padding="8dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:text="Total visited" />
+
+    <TextView
+        android:id="@+id/tv_total_visited"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/total_visited"
+        android:padding="8dp"
+        android:textSize="23dp"
+        android:gravity = "center"
+        android:textStyle="bold"
+        android:textColor="@color/secondaryColor"/>
+
 </RelativeLayout>
