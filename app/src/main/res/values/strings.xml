@@ -28,4 +28,5 @@
     <string name="toast_delete">The hillfort is successfully deleted</string>
     <string name="visited">visited</string>
     <string name="additional_notes">Additional notes</string>
+    <string name="fullname">%1$s %2$s</string >
 </resources>

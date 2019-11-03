@@ -9,6 +9,9 @@ import com.google.firebase.auth.FirebaseAuth
 import android.view.View
 import android.widget.*
 import ie.wit.hillforts.main.MainActivity
+import android.widget.Toast
+
+
 
 class LoginActivity : AppCompatActivity() {
     private val TAG = "LoginActivity"
@@ -28,7 +31,21 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        initialise()
+        var mAuth = FirebaseAuth.getInstance()
+        if (mAuth.getCurrentUser() != null) {
+
+            Toast.makeText(
+                this@LoginActivity, "Already Logged In",
+                Toast.LENGTH_LONG
+            ).show()
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+
+        } else {
+            initialise()
+        }
+
     }
     private fun initialise() {
 //        tvForgotPassword = findViewById<View>(R.id.tv_forgot_password) as TextView

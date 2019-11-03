@@ -23,10 +23,19 @@ import ie.wit.hillforts.activities.AccountActivity
 class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
     lateinit var app: MainApp
 
+    override fun onStart() {
+        super.onStart()
+        var mAuth = FirebaseAuth.getInstance()
+        if (mAuth.getCurrentUser() == null) {
+            val intentBack = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intentBack)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
         app = application as MainApp
 
 
