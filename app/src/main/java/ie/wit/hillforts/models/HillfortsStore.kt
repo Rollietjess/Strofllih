@@ -8,4 +8,5 @@ interface HillfortsStore {
     fun delete(hillfort: HillfortsModel)
     fun getTotalHillforts(): Int
     fun getVisitedHillforts(): Int
+    fun findById(id:Long) : HillfortsModel?
 }

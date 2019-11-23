@@ -31,4 +31,7 @@
     <string name="fullname">%1$s %2$s</string>
     <string name="all_hillforts">All hillforts</string>
     <string name="title_activity_hillforts_maps">Map of all hillforts</string>
+    <string name="hillfort_image_placeholder">Hillfort Imagee</string>
+    <string name="hillfort_title_placeholder">Hillfort Title</string>
+    <string name="hillfort_description_placeholder">Hillfort Description</string>
 </resources>

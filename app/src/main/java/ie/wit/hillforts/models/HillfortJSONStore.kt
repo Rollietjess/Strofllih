@@ -104,4 +104,9 @@ class HillfortJSONStore : HillfortsStore, AnkoLogger {
         info("list: " + hillforts )
         return listVisited.size
     }
+
+    override fun findById(id:Long) : HillfortsModel? {
+        val foundHillfort: HillfortsModel? = hillforts.find { it.id == id }
+        return foundHillfort
+    }
 }
