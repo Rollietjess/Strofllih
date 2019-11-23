@@ -10,14 +10,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import ie.wit.hillforts.LoginActivity
 import ie.wit.hillforts.R
-import ie.wit.hillforts.activities.HillfortAdapter
-import ie.wit.hillforts.activities.HillfortsActivity
-import ie.wit.hillforts.activities.HillfortsListener
+import ie.wit.hillforts.activities.*
 import ie.wit.hillforts.models.HillfortsModel
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.intentFor
-import ie.wit.hillforts.activities.AccountActivity
 
 
 class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
@@ -65,6 +62,8 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
                 return true}
             R.id.account -> { account()
                 return true}
+            R.id.item_map -> { hillfort_maps()
+                return true}
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -79,6 +78,11 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
 
     fun account(){
         val intentAccount = Intent(this@MainActivity, AccountActivity::class.java)
+        startActivity(intentAccount)
+    }
+
+    fun hillfort_maps(){
+        val intentAccount = Intent(this@MainActivity, HillfortsMapsActivity::class.java)
         startActivity(intentAccount)
     }
 
