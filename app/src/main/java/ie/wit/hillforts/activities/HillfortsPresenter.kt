@@ -1,13 +1,17 @@
 package ie.wit.hillforts.activities
 
 import android.content.Intent
+import androidx.core.view.isVisible
+import ie.wit.hillforts.R
 import org.jetbrains.anko.intentFor
 import ie.wit.hillforts.helpers.showImagePicker
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.models.HillfortsModel
+import kotlinx.android.synthetic.main.activity_hillforts.*
+import org.jetbrains.anko.toast
 
-class PlacemarkPresenter(val view: HillfortsActivity) {
+class HillfortsPresenter(val view: HillfortsActivity) {
 
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2
@@ -22,13 +26,26 @@ class PlacemarkPresenter(val view: HillfortsActivity) {
         if (view.intent.hasExtra("hillfort_edit")) {
             edit = true
             hillfort = view.intent.extras?.getParcelable<HillfortsModel>("hillfort_edit")!!
-//            view.showHillfort(hillfort)
+            if(hillfort.visited){
+                view.text_view_date_1.isVisible = true
+                view.button_date_1.isVisible = true
+                view.text_view_date_1.setText(hillfort.dateVisited)
+            }
+            view.showHillfort(hillfort)
         }
     }
 
-    fun doAddOrSave(title: String, description: String) {
+    fun doAddOrSave(title: String, description: String, visited: Boolean, text_date: String, additionalNote: String) {
         hillfort.title = title
         hillfort.description = description
+        hillfort.visited = visited
+
+        if(visited){
+            hillfort.dateVisited = text_date
+        }
+
+        hillfort.additionalNotes = additionalNote
+
         if (edit) {
             app.hillforts.update(hillfort)
         } else {
@@ -46,6 +63,7 @@ class PlacemarkPresenter(val view: HillfortsActivity) {
         view.finish()
     }
 
+
     fun doSelectImage() {
         showImagePicker(view, IMAGE_REQUEST)
     }
@@ -56,14 +74,14 @@ class PlacemarkPresenter(val view: HillfortsActivity) {
             location.lng = hillfort.lng
             location.zoom = hillfort.zoom
         }
-//        view.startActivityForResult(view.intentFor<EditLocationView>().putExtra("location", location), LOCATION_REQUEST)
+        view.startActivityForResult(view.intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
     }
 
     fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 hillfort.image = data.data.toString()
-//                view.showHillfort(hillfort)
+                view.showHillfort(hillfort)
             }
             LOCATION_REQUEST -> {
                 location = data.extras?.getParcelable<Location>("location")!!

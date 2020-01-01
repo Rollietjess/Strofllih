@@ -117,41 +117,41 @@
                     android:padding="8dp"
                     app:srcCompat="@mipmap/ic_launcher" />
 
-                <RelativeLayout
-                    android:id="@+id/extra_images"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/extra_images"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentTop="true">-->
 
-                    <ImageView
-                        android:id="@+id/hillfortImage1"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="10dp"
-                        android:padding="8dp"
-                        app:srcCompat="@mipmap/ic_launcher" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/hillfortImage1"-->
+<!--                        android:layout_width="110dp"-->
+<!--                        android:layout_height="110dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        app:srcCompat="@mipmap/ic_launcher" />-->
 
-                    <ImageView
-                        android:id="@+id/hillfortImage2"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@id/hillfortImage1"
-                        android:padding="8dp"
-                        app:srcCompat="@mipmap/ic_launcher" />
+<!--                    <ImageView-->
+<!--                        android:id="@+id/hillfortImage2"-->
+<!--                        android:layout_width="110dp"-->
+<!--                        android:layout_height="110dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_toRightOf="@id/hillfortImage1"-->
+<!--                        android:padding="8dp"-->
+<!--                        app:srcCompat="@mipmap/ic_launcher" />-->
 
-                    <ImageView
-                        android:id="@+id/hillfortImage3"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@id/hillfortImage2"
-                        android:padding="8dp"
-                        app:srcCompat="@mipmap/ic_launcher" />
-                </RelativeLayout>
+<!--                    <ImageView-->
+<!--                        android:id="@+id/hillfortImage3"-->
+<!--                        android:layout_width="110dp"-->
+<!--                        android:layout_height="110dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_toRightOf="@id/hillfortImage2"-->
+<!--                        android:padding="8dp"-->
+<!--                        app:srcCompat="@mipmap/ic_launcher" />-->
+<!--                </RelativeLayout>-->
 
                 <Button
                     android:id="@+id/hillfortLocation"
