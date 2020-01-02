@@ -60,14 +60,20 @@ class HillfortsView : BaseView(), AnkoLogger {
             if (placemarkTitle.text.toString().isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
-                presenter.doAddOrSave(placemarkTitle.text.toString(), description.text.toString(), checkbox_visited.isChecked, text_view_date_1.text.toString(), additionalNotes.text.toString())
+                presenter.doAddOrSave(
+                    placemarkTitle.text.toString(),
+                    description.text.toString(),
+                    checkbox_visited.isChecked,
+                    text_view_date_1.text.toString(),
+                    additionalNotes.text.toString()
+                )
             }
         }
 
         checkbox_visited.setOnClickListener() {
             text_view_date_1.isVisible = false
             button_date_1.isVisible = false
-            if(checkbox_visited.isChecked){
+            if (checkbox_visited.isChecked) {
                 text_view_date_1.isVisible = true
                 button_date_1.isVisible = true
             }
@@ -76,12 +82,18 @@ class HillfortsView : BaseView(), AnkoLogger {
 
         chooseImage.setOnClickListener { presenter.doSelectImage() }
 
-        hillfortLocation.setOnClickListener { presenter.doSetLocation() }
+//        hillfortLocation.setOnClickListener { presenter.doSetLocation() }
+        mapViewLocation.getMapAsync {
+            presenter.doConfigureMap(it)
+            it.setOnMapClickListener { presenter.doSetLocation() }
+        }
 
         // create an OnDateSetListener
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
-            override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,
-                                   dayOfMonth: Int) {
+            override fun onDateSet(
+                view: DatePicker, year: Int, monthOfYear: Int,
+                dayOfMonth: Int
+            ) {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -92,12 +104,14 @@ class HillfortsView : BaseView(), AnkoLogger {
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
         button_date!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                DatePickerDialog(this@HillfortsView,
+                DatePickerDialog(
+                    this@HillfortsView,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),
                     cal.get(Calendar.MONTH),
-                    cal.get(Calendar.DAY_OF_MONTH)).show()
+                    cal.get(Calendar.DAY_OF_MONTH)
+                ).show()
             }
 
         })
@@ -115,6 +129,9 @@ class HillfortsView : BaseView(), AnkoLogger {
         checkbox_visited.isChecked = hillfort.visited
         additionalNotes.setText(hillfort.additionalNotes)
         hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+
+        lat.setText("Lat: %.6f".format(hillfort.lat))
+        lng.setText("Lng: %.6f".format(hillfort.lng))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
