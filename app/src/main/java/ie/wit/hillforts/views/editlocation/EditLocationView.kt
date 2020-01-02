@@ -10,7 +10,7 @@ import ie.wit.hillforts.R
 import ie.wit.hillforts.views.BaseView
 import ie.wit.hillforts.views.editlocation.EditLocationPresenter
 
-class EditLoctionView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
+class EditLocationView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
 //    var location = Location()
