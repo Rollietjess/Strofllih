@@ -26,7 +26,7 @@ var textview_date: TextView? = null
 
 var cal = Calendar.getInstance()
 
-class HillfortsActivity : AppCompatActivity(), AnkoLogger {
+class HillfortsView : AppCompatActivity(), AnkoLogger {
     lateinit var presenter: HillfortsPresenter
     var hillfort = HillfortsModel()
 
@@ -82,7 +82,7 @@ class HillfortsActivity : AppCompatActivity(), AnkoLogger {
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
         button_date!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {
-                DatePickerDialog(this@HillfortsActivity,
+                DatePickerDialog(this@HillfortsView,
                     dateSetListener,
                     // set DatePickerDialog to point to today's date when it loads up
                     cal.get(Calendar.YEAR),

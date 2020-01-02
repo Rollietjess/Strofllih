@@ -1,21 +1,20 @@
 package ie.wit.hillforts.main
 
 import android.content.Intent
-import kotlinx.android.synthetic.main.activity_main.*
 import android.os.Bundle
-import android.view.*
-import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.LoginActivity
 import ie.wit.hillforts.R
 import ie.wit.hillforts.activities.*
 import ie.wit.hillforts.models.HillfortsModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.intentFor
-
 
 class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
     lateinit var app: MainApp
@@ -28,44 +27,43 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
             startActivity(intentBack)
         }
     }
+
+    lateinit var presenter: HillfortsListPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        app = application as MainApp
-
-
         fab.setOnClickListener() {
             // Handler code here.
-            val intent = Intent(this@MainActivity, HillfortsActivity::class.java)
-            startActivityForResult(intent,0)
+//            val intent = Intent(this@MainActivityNew, HillfortsView::class.java)
+//            startActivityForResult(intent,0)
+
+            presenter.doAddHillfort()
         }
 
+        presenter = HillfortsListPresenter(this)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        loadHillforts()
+        recyclerView.adapter =
+            HillfortAdapter(presenter.getHillforts(), this)
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
-        return true
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item?.itemId) {
+        when (item?.itemId) {
+            R.id.account -> presenter.doShowAccount()
+            R.id.item_map -> presenter.doShowHillfortsMap()
             R.id.logout_app -> { signOut()
                 return true}
-            R.id.account -> { account()
-                return true}
-            R.id.item_map -> { hillfort_maps()
-                return true}
-            else -> super.onOptionsItemSelected(item)
         }
+        return super.onOptionsItemSelected(item)
     }
 
     fun signOut(){
@@ -76,27 +74,13 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
         Toast.makeText(this, "Logout Successfully!", Toast.LENGTH_SHORT).show()
     }
 
-    fun account(){
-        val intentAccount = Intent(this@MainActivity, AccountActivity::class.java)
-        startActivity(intentAccount)
-    }
-
-    fun hillfort_maps(){
-        val intentAccount = Intent(this@MainActivity, HillfortsMapsActivity::class.java)
-        startActivity(intentAccount)
-    }
-
     override fun onHillfortsClick(hillfort: HillfortsModel) {
-        startActivityForResult(intentFor<HillfortsActivity>().putExtra("hillfort_edit", hillfort), 0)
+        presenter.doEditHillfort(hillfort)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        loadHillforts()
+        showHillforts(presenter.getHillforts())
         super.onActivityResult(requestCode, resultCode, data)
-    }
-
-    private fun loadHillforts() {
-        showHillforts(app.hillforts.findSpecific())
     }
 
     fun showHillforts (hillforts: List<HillfortsModel>) {

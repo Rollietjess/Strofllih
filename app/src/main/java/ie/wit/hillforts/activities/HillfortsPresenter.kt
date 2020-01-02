@@ -11,7 +11,7 @@ import ie.wit.hillforts.models.HillfortsModel
 import kotlinx.android.synthetic.main.activity_hillforts.*
 import org.jetbrains.anko.toast
 
-class HillfortsPresenter(val view: HillfortsActivity) {
+class HillfortsPresenter(val view: HillfortsView) {
 
     val IMAGE_REQUEST = 1
     val LOCATION_REQUEST = 2

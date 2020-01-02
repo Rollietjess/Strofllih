@@ -41,7 +41,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".activities.HillfortsActivity" />
+        <activity android:name=".activities.HillfortsView" />
         <activity android:name=".activities.AccountActivity" />
     </application>
 
