@@ -14,6 +14,7 @@ import androidx.core.view.isVisible
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_hillforts.*
 import kotlinx.android.synthetic.main.activity_hillforts.description
 import org.jetbrains.anko.AnkoLogger
@@ -26,7 +27,7 @@ var textview_date: TextView? = null
 
 var cal = Calendar.getInstance()
 
-class HillfortsView : AppCompatActivity(), AnkoLogger {
+class HillfortsView : BaseView(), AnkoLogger {
     lateinit var presenter: HillfortsPresenter
     var hillfort = HillfortsModel()
 
@@ -99,7 +100,7 @@ class HillfortsView : AppCompatActivity(), AnkoLogger {
         textview_date!!.text = sdf.format(cal.getTime())
     }
 
-    fun showHillfort(hillfort: HillfortsModel) {
+    override fun showHillfort(hillfort: HillfortsModel) {
         placemarkTitle.setText(hillfort.title)
         description.setText(hillfort.description)
         checkbox_visited.isChecked = hillfort.visited
