@@ -11,6 +11,7 @@ import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.google.android.gms.maps.GoogleMap
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
@@ -30,6 +31,7 @@ var cal = Calendar.getInstance()
 class HillfortsView : BaseView(), AnkoLogger {
     lateinit var presenter: HillfortsPresenter
     var hillfort = HillfortsModel()
+    lateinit var map: GoogleMap
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +48,13 @@ class HillfortsView : BaseView(), AnkoLogger {
 
 
         presenter = HillfortsPresenter(this)
+
+        mapViewLocation.onCreate(savedInstanceState);
+        mapViewLocation.getMapAsync {
+            map = it
+            presenter.doConfigureMap(map)
+        }
+
 
         fab_save.setOnClickListener {
             if (placemarkTitle.text.toString().isEmpty()) {
@@ -141,5 +150,30 @@ class HillfortsView : BaseView(), AnkoLogger {
             menu.findItem(R.id.item_delete).isVisible = true
         }
         return super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapViewLocation.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapViewLocation.onLowMemory()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        mapViewLocation.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapViewLocation.onResume()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        mapViewLocation.onSaveInstanceState(outState)
     }
 }

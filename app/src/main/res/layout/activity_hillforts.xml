@@ -164,6 +164,11 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapViewLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="202dp" />
+
                 <!--                <Button-->
                 <!--                    android:id="@+id/btnAdd"-->
                 <!--                    android:layout_width="match_parent"-->
