@@ -187,6 +187,7 @@ class HillfortsView : BaseView(), AnkoLogger {
     override fun onResume() {
         super.onResume()
         mapViewLocation.onResume()
+        presenter.doResartLocationUpdates()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
