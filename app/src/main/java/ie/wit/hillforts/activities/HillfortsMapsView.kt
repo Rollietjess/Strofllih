@@ -15,7 +15,7 @@ import ie.wit.hillforts.main.MainApp
 import kotlinx.android.synthetic.main.activity_hillforts_maps.*
 import kotlinx.android.synthetic.main.content_hillforts_maps.*
 
-class HillfortsMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class HillfortsMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     lateinit var map: GoogleMap
     lateinit var app: MainApp

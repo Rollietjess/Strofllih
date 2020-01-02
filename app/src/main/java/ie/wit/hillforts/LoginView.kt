@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import android.view.View
 import android.widget.*
-import ie.wit.hillforts.main.MainActivity
+import ie.wit.hillforts.views.hillfortlist.MainView
 import android.widget.Toast
 
 
 
-class LoginActivity : AppCompatActivity() {
-    private val TAG = "LoginActivity"
+class LoginView : AppCompatActivity() {
+    private val TAG = "LoginView"
     //global variables
     private var email: String? = null
     private var password: String? = null
@@ -35,10 +35,10 @@ class LoginActivity : AppCompatActivity() {
         if (mAuth.getCurrentUser() != null) {
 
             Toast.makeText(
-                this@LoginActivity, "Already Logged In",
+                this@LoginView, "Already Logged In",
                 Toast.LENGTH_LONG
             ).show()
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            val intent = Intent(this@LoginView, MainView::class.java)
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
 
@@ -57,12 +57,12 @@ class LoginActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 //        tvForgotPassword!!
 //            .setOnClickListener { startActivity(
-//                Intent(this@LoginActivity,
+//                Intent(this@LoginView,
 //                ForgotPasswordActivity::class.java)
 //            ) }
         btnCreateAccount!!
-            .setOnClickListener { startActivity(Intent(this@LoginActivity,
-                CreateAccountActivity::class.java)) }
+            .setOnClickListener { startActivity(Intent(this@LoginView,
+                CreateAccountView::class.java)) }
         btnLogin!!.setOnClickListener { loginUser() }
     }
 
@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.e(TAG, "signInWithEmail:failure", task.exception)
-                        Toast.makeText(this@LoginActivity, "Authentication failed.",
+                        Toast.makeText(this@LoginView, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -93,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+        val intent = Intent(this@LoginView, MainView::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

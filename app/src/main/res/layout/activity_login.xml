@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="10dp"
     android:orientation="vertical"
-    tools:context="ie.wit.hillforts.LoginActivity">
+    tools:context="ie.wit.hillforts.LoginView">
 
 
     <com.google.android.material.textfield.TextInputLayout
