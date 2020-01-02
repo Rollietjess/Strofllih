@@ -1,13 +1,13 @@
 package ie.wit.hillforts.activities
 
-import ie.wit.hillforts.main.MainActivity
+import ie.wit.hillforts.main.MainView
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
 
-class HillfortsListPresenter(val view: MainActivity) {
+class HillfortsListPresenter(val view: MainView) {
 
     var app: MainApp
 
@@ -27,7 +27,7 @@ class HillfortsListPresenter(val view: MainActivity) {
     }
 
     fun doShowHillfortsMap() {
-        view.startActivity<HillfortsMapsActivity>()
+        view.startActivity<HillfortsMapsView>()
     }
 
     fun doShowAccount() {

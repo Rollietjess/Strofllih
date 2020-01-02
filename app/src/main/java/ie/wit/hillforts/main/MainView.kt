@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
-import ie.wit.hillforts.LoginActivity
+import ie.wit.hillforts.LoginView
 import ie.wit.hillforts.R
 import ie.wit.hillforts.activities.*
 import ie.wit.hillforts.models.HillfortsModel
@@ -16,14 +16,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.AnkoLogger
 
-class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
+class MainView : AppCompatActivity(), HillfortsListener, AnkoLogger {
     lateinit var app: MainApp
 
     override fun onStart() {
         super.onStart()
         var mAuth = FirebaseAuth.getInstance()
         if (mAuth.getCurrentUser() == null) {
-            val intentBack = Intent(this@MainActivity, LoginActivity::class.java)
+            val intentBack = Intent(this@MainView, LoginView::class.java)
             startActivity(intentBack)
         }
     }
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), HillfortsListener, AnkoLogger {
 
     fun signOut(){
         FirebaseAuth.getInstance().signOut()
-        val intentLogout = Intent(this@MainActivity, LoginActivity::class.java)
+        val intentLogout = Intent(this@MainView, LoginView::class.java)
         startActivity(intentLogout)
 
         Toast.makeText(this, "Logout Successfully!", Toast.LENGTH_SHORT).show()

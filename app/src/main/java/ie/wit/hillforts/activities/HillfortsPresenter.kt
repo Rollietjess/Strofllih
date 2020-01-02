@@ -2,14 +2,12 @@ package ie.wit.hillforts.activities
 
 import android.content.Intent
 import androidx.core.view.isVisible
-import ie.wit.hillforts.R
 import org.jetbrains.anko.intentFor
 import ie.wit.hillforts.helpers.showImagePicker
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.models.HillfortsModel
 import kotlinx.android.synthetic.main.activity_hillforts.*
-import org.jetbrains.anko.toast
 
 class HillfortsPresenter(val view: HillfortsView) {
 
@@ -74,7 +72,7 @@ class HillfortsPresenter(val view: HillfortsView) {
             location.lng = hillfort.lng
             location.zoom = hillfort.zoom
         }
-        view.startActivityForResult(view.intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
+        view.startActivityForResult(view.intentFor<EditLoctionView>().putExtra("location", location), LOCATION_REQUEST)
     }
 
     fun doActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
