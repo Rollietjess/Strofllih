@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import org.jetbrains.anko.AnkoLogger
 
 import ie.wit.hillforts.models.HillfortsModel
-import ie.wit.hillforts.views.editlocation.EditLoctionView
+import ie.wit.hillforts.views.editlocation.EditLocationView
 import ie.wit.hillforts.views.hillfortsmap.HillfortsMapsView
 import ie.wit.hillforts.views.hillfort.HillfortsView
 import ie.wit.hillforts.views.hillfortlist.MainView
@@ -27,7 +27,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
     fun navigateTo(view: VIEW, code: Int = 0, key: String = "", value: Parcelable? = null) {
         var intent = Intent(this, MainView::class.java)
         when (view) {
-            VIEW.LOCATION -> intent = Intent(this, EditLoctionView::class.java)
+            VIEW.LOCATION -> intent = Intent(this, EditLocationView::class.java)
             VIEW.HILLFORT -> intent = Intent(this, HillfortsView::class.java)
             VIEW.MAPS -> intent = Intent(this, HillfortsMapsView::class.java)
             VIEW.LIST -> intent = Intent(this, MainView::class.java)

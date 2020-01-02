@@ -22,7 +22,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".views.editlocation.EditLoctionView"
+            android:name=".views.editlocation.EditLocationView"
             android:label="@string/title_activity_map" />
         <activity
             android:name=".SplashScreen"

@@ -20,7 +20,7 @@ import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.models.HillfortsModel
 import ie.wit.hillforts.views.*
-import ie.wit.hillforts.views.editlocation.EditLoctionView
+import ie.wit.hillforts.views.editlocation.EditLocationView
 import kotlinx.android.synthetic.main.activity_hillforts.*
 
 class HillfortsPresenter(view: BaseView) : BasePresenter(view) {
