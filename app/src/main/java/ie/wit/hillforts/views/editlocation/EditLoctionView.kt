@@ -7,9 +7,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import ie.wit.hillforts.R
+import ie.wit.hillforts.views.BaseView
 import ie.wit.hillforts.views.editlocation.EditLocationPresenter
 
-class EditLoctionView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
+class EditLoctionView : BaseView(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
 //    var location = Location()
@@ -24,7 +25,7 @@ class EditLoctionView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, Goo
             map = it
             map.setOnMarkerDragListener(this)
             map.setOnMarkerClickListener(this)
-            presenter.initMap(map)
+            presenter.doConfigureMap(map)
         }
     }
 
@@ -33,11 +34,11 @@ class EditLoctionView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, Goo
     override fun onMarkerDrag(marker: Marker) {}
 
     override fun onMarkerDragEnd(marker: Marker) {
-        presenter.doUpdateLocation(marker.position.latitude, marker.position.longitude, map.cameraPosition.zoom)
+        presenter.doUpdateLocation(marker.position.latitude, marker.position.longitude)
     }
 
     override fun onBackPressed() {
-        presenter.doOnBackPressed()
+        presenter.doSave()
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {

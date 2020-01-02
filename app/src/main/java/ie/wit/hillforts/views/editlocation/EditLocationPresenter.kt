@@ -8,8 +8,10 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import ie.wit.hillforts.models.Location
+import ie.wit.hillforts.views.BasePresenter
+import ie.wit.hillforts.views.BaseView
 
-class EditLocationPresenter(val view: EditLoctionView) {
+class EditLocationPresenter(view: BaseView) : BasePresenter(view) {
 
     var location = Location()
 
@@ -17,7 +19,7 @@ class EditLocationPresenter(val view: EditLoctionView) {
         location = view.intent.extras?.getParcelable<Location>("location")!!
     }
 
-    fun initMap(map: GoogleMap) {
+    fun doConfigureMap(map: GoogleMap) {
         val loc = LatLng(location.lat, location.lng)
         val options = MarkerOptions()
             .title("Placemark")
@@ -28,17 +30,16 @@ class EditLocationPresenter(val view: EditLoctionView) {
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, location.zoom))
     }
 
-    fun doUpdateLocation(lat: Double, lng: Double, zoom: Float) {
+    fun doUpdateLocation(lat: Double, lng: Double) {
         location.lat = lat
         location.lng = lng
-        location.zoom = zoom
     }
 
-    fun doOnBackPressed() {
+    fun doSave() {
         val resultIntent = Intent()
         resultIntent.putExtra("location", location)
-        view.setResult(Activity.RESULT_OK, resultIntent)
-        view.finish()
+        view?.setResult(0, resultIntent)
+        view?.finish()
     }
 
     fun doUpdateMarker(marker: Marker) {
