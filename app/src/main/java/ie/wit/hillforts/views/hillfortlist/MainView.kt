@@ -12,11 +12,12 @@ import ie.wit.hillforts.LoginView
 import ie.wit.hillforts.R
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.AnkoLogger
 
-class MainView : AppCompatActivity(), HillfortsListener, AnkoLogger {
+class MainView :  BaseView(), HillfortsListener {
     lateinit var app: MainApp
 
     override fun onStart() {
@@ -43,12 +44,17 @@ class MainView : AppCompatActivity(), HillfortsListener, AnkoLogger {
             presenter.doAddHillfort()
         }
 
-        presenter = HillfortsListPresenter(this)
+//        presenter = HillfortsListPresenter(this)
+//        val layoutManager = LinearLayoutManager(this)
+//        recyclerView.layoutManager = layoutManager
+//        recyclerView.adapter =
+//            HillfortAdapter(presenter.getHillforts(), this)
+//        recyclerView.adapter?.notifyDataSetChanged()
+        presenter = initPresenter(HillfortsListPresenter(this)) as HillfortsListPresenter
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter =
-            HillfortAdapter(presenter.getHillforts(), this)
-        recyclerView.adapter?.notifyDataSetChanged()
+        presenter.loadHillforts()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -83,7 +89,7 @@ class MainView : AppCompatActivity(), HillfortsListener, AnkoLogger {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-    fun showHillforts (hillforts: List<HillfortsModel>) {
+    override fun showHillforts (hillforts: List<HillfortsModel>) {
         recyclerView.adapter = HillfortAdapter(hillforts, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }

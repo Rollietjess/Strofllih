@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.HillfortsMapsView"
+            android:name=".views.hillfortsmap.HillfortsMapsView"
             android:label="@string/title_activity_hillforts_maps"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
