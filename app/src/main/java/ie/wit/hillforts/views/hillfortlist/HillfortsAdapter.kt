@@ -1,4 +1,4 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.hillfortlist
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,8 @@ interface HillfortsListener {
 }
 
 class HillfortAdapter constructor(private var hillforts: List<HillfortsModel>,
-                                   private val listener: HillfortsListener) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
+                                   private val listener: HillfortsListener
+) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(

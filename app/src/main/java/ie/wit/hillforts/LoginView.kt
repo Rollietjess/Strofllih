@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import android.view.View
 import android.widget.*
-import ie.wit.hillforts.main.MainView
+import ie.wit.hillforts.views.hillfortlist.MainView
 import android.widget.Toast
 
 

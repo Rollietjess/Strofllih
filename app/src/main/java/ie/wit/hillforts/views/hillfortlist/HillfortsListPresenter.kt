@@ -1,11 +1,13 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.hillfortlist
 
-import ie.wit.hillforts.main.MainView
+import ie.wit.hillforts.activities.AccountActivity
+import ie.wit.hillforts.activities.HillfortsMapsView
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.views.hillfort.HillfortsView
 
 class HillfortsListPresenter(val view: MainView) {
 

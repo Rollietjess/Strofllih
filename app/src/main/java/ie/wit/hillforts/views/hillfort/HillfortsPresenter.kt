@@ -1,4 +1,4 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.hillfort
 
 import android.content.Intent
 import androidx.core.view.isVisible
@@ -7,6 +7,7 @@ import ie.wit.hillforts.helpers.showImagePicker
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.views.editlocation.EditLoctionView
 import kotlinx.android.synthetic.main.activity_hillforts.*
 
 class HillfortsPresenter(val view: HillfortsView) {

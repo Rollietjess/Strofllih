@@ -1,4 +1,4 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.editlocation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.Marker
 import ie.wit.hillforts.R
+import ie.wit.hillforts.views.editlocation.EditLocationPresenter
 
 class EditLoctionView : AppCompatActivity(), GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener {
 

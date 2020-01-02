@@ -1,9 +1,8 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.hillfortlist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ie.wit.hillforts.R
-import ie.wit.hillforts.main.MainView
 
 class PlacemarkListActivity : AppCompatActivity() {
 

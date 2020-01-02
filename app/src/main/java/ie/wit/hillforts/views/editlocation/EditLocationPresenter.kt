@@ -1,4 +1,4 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.editlocation
 
 import android.app.Activity
 import android.content.Intent

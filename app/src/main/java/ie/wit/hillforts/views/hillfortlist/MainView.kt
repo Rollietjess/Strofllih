@@ -1,4 +1,4 @@
-package ie.wit.hillforts.main
+package ie.wit.hillforts.views.hillfortlist
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.LoginView
 import ie.wit.hillforts.R
-import ie.wit.hillforts.activities.*
+import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*

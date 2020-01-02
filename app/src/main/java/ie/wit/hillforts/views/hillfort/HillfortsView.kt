@@ -1,4 +1,4 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.hillfort
 
 import android.app.DatePickerDialog
 import android.content.Intent
