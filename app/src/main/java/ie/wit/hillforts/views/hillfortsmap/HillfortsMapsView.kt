@@ -7,29 +7,38 @@ import com.google.android.gms.maps.model.Marker
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_hillforts_maps.*
 import kotlinx.android.synthetic.main.content_hillforts_maps.*
 
-class HillfortsMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class HillfortsMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
 
     lateinit var presenter: HillfortsMapsPresenter
+    lateinit var map : GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillforts_maps)
-        setSupportActionBar(toolbar)
-        presenter = HillfortsMapsPresenter(this)
+        super.init(toolbar)
+
+        presenter = initPresenter (HillfortsMapsPresenter(this)) as HillfortsMapsPresenter
 
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync {
-            presenter.doPopulateMap(it)
+            map = it
+            map.setOnMarkerClickListener(this)
+            presenter.loadHillforts()
         }
     }
 
-    fun showHillfort(hillfort: HillfortsModel) {
+    override fun showHillfort(hillfort: HillfortsModel) {
         currentTitle.text = hillfort.title
         currentDescription.text = hillfort.description
         currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+    }
+
+    override fun showHillforts(hillforts: List<HillfortsModel>) {
+        presenter.doPopulateMap(map, hillforts)
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
