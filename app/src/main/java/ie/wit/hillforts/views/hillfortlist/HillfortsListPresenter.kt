@@ -7,32 +7,51 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.views.BasePresenter
+import ie.wit.hillforts.views.BaseView
+import ie.wit.hillforts.views.VIEW
 import ie.wit.hillforts.views.hillfort.HillfortsView
 
-class HillfortsListPresenter(val view: MainView) {
+class HillfortsListPresenter(view: BaseView) : BasePresenter(view) {
 
-    var app: MainApp
-
-    init {
-        app = view.application as MainApp
+//    var app: MainApp
+////
+////    init {
+////        app = view.application as MainApp
+////    }
+////
+////    //fun getHillforts() = app.hillforts.findAll()
+    fun getHillforts() = app.hillforts.findSpecific()
+//
+////    fun doAddHillfort() {
+////        view.startActivityForResult<HillfortsView>(0)
+////    }
+////
+////    fun doEditHillfort(hillfort: HillfortsModel) {
+////        view.startActivityForResult(view.intentFor<HillfortsView>().putExtra("hillfort_edit", hillfort), 0)
+////    }
+////
+////    fun doShowHillfortsMap() {
+////        view.startActivity<HillfortsMapsView>()
+////    }
+////
+    fun doShowAccount() {
+        view?.startActivity<AccountActivity>()
     }
 
-    //fun getHillforts() = app.hillforts.findAll()
-    fun getHillforts() = app.hillforts.findSpecific()
-
     fun doAddHillfort() {
-        view.startActivityForResult<HillfortsView>(0)
+        view?.navigateTo(VIEW.HILLFORT)
     }
 
     fun doEditHillfort(hillfort: HillfortsModel) {
-        view.startActivityForResult(view.intentFor<HillfortsView>().putExtra("hillfort_edit", hillfort), 0)
+        view?.navigateTo(VIEW.HILLFORT, 0, "hillfort_edit", hillfort)
     }
 
     fun doShowHillfortsMap() {
-        view.startActivity<HillfortsMapsView>()
+        view?.navigateTo(VIEW.MAPS)
     }
 
-    fun doShowAccount() {
-        view.startActivity<AccountActivity>()
+    fun loadHillforts() {
+        view?.showHillforts(app.hillforts.findSpecific())
     }
 }
