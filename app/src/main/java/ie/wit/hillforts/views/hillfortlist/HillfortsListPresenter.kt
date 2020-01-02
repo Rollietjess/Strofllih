@@ -1,7 +1,7 @@
 package ie.wit.hillforts.views.hillfortlist
 
 import ie.wit.hillforts.activities.AccountActivity
-import ie.wit.hillforts.activities.HillfortsMapsView
+import ie.wit.hillforts.views.hillfortsmap.HillfortsMapsView
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
