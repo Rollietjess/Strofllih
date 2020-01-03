@@ -39,9 +39,10 @@ class HillfortsMemStore : HillfortsStore, AnkoLogger {
             foundHillfort.title = hillfort.title
             foundHillfort.description = hillfort.description
             foundHillfort.image = hillfort.image
-            foundHillfort.lat = hillfort.lat
-            foundHillfort.lng = hillfort.lng
-            foundHillfort.zoom = hillfort.zoom
+//            foundHillfort.lat = hillfort.lat
+//            foundHillfort.lng = hillfort.lng
+//            foundHillfort.zoom = hillfort.zoom
+            foundHillfort.location = hillfort.location
             logAll();
         }
     }
@@ -57,5 +58,9 @@ class HillfortsMemStore : HillfortsStore, AnkoLogger {
     override fun findById(id:Long) : HillfortsModel? {
         val foundHillfort: HillfortsModel? = hillforts.find { it.id == id }
         return foundHillfort
+    }
+
+    override fun clear() {
+        hillforts.clear()
     }
 }

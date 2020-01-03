@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_hillforts.*
 import kotlinx.android.synthetic.main.activity_hillforts.description
@@ -132,8 +133,14 @@ class HillfortsView : BaseView(), AnkoLogger {
         additionalNotes.setText(hillfort.additionalNotes)
         hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
 
-        lat.setText("Lat: %.6f".format(hillfort.lat))
-        lng.setText("Lng: %.6f".format(hillfort.lng))
+//        lat.setText("Lat: %.6f".format(hillfort.lat))
+//        lng.setText("Lng: %.6f".format(hillfort.lng))
+        this.showLocation(hillfort.location)
+    }
+
+    override fun showLocation(location: Location) {
+        lat.setText("%.6f".format(location.lat))
+        lng.setText("%.6f".format(location.lng))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -9,4 +9,5 @@ interface HillfortsStore {
     fun getTotalHillforts(): Int
     fun getVisitedHillforts(): Int
     fun findById(id:Long) : HillfortsModel?
+    fun clear()
 }
