@@ -11,6 +11,7 @@ import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.R
@@ -131,8 +132,8 @@ class HillfortsView : BaseView(), AnkoLogger {
         description.setText(hillfort.description)
         checkbox_visited.isChecked = hillfort.visited
         additionalNotes.setText(hillfort.additionalNotes)
-        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
-
+//        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        Glide.with(this).load(hillfort.image).into(hillfortImage);
 //        lat.setText("Lat: %.6f".format(hillfort.lat))
 //        lng.setText("Lng: %.6f".format(hillfort.lng))
         this.showLocation(hillfort.location)
