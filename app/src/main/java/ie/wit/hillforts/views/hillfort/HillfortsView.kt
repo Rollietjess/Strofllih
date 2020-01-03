@@ -12,12 +12,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.android.gms.maps.GoogleMap
+import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
 import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_hillforts.*
 import kotlinx.android.synthetic.main.activity_hillforts.description
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat

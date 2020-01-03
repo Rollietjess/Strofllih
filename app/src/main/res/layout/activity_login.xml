@@ -45,6 +45,16 @@
         android:text="@string/login_title"
         android:textStyle="bold" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="196dp"
+        android:layout_height="96dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
@@ -60,5 +70,6 @@
             android:text="@string/create_act"
             android:textStyle="bold" />
     </LinearLayout>
+
 
 </LinearLayout>

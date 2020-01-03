@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.*
 import ie.wit.hillforts.views.hillfortlist.MainView
 import android.widget.Toast
-
+import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginView : AppCompatActivity() {
@@ -31,6 +31,8 @@ class LoginView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        progressBar.visibility = View.GONE
         var mAuth = FirebaseAuth.getInstance()
         if (mAuth.getCurrentUser() != null) {
 
@@ -67,6 +69,7 @@ class LoginView : AppCompatActivity() {
     }
 
     private fun loginUser() {
+        showProgress()
         email = etEmail?.text.toString()
         password = etPassword?.text.toString()
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
@@ -80,6 +83,7 @@ class LoginView : AppCompatActivity() {
                         // Sign in success, update UI with signed-in user's information
                         Log.d(TAG, "signInWithEmail:success")
                         updateUI()
+                        hideProgress()
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.e(TAG, "signInWithEmail:failure", task.exception)
@@ -96,5 +100,13 @@ class LoginView : AppCompatActivity() {
         val intent = Intent(this@LoginView, MainView::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
+    }
+
+    fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    fun hideProgress() {
+        progressBar.visibility = View.GONE
     }
 }
