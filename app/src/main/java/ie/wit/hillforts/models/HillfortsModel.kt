@@ -1,12 +1,13 @@
 package ie.wit.hillforts.models
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.time.LocalDate
-import java.util.*
 
 @Parcelize
-data class HillfortsModel(var id: Long = 0,
+@Entity
+data class HillfortsModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                           var userid: String = "",
                           var title: String = "",
                           var description: String = "",

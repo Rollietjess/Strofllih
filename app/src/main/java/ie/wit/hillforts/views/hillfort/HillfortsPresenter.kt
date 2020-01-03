@@ -22,6 +22,8 @@ import ie.wit.hillforts.models.HillfortsModel
 import ie.wit.hillforts.views.*
 import ie.wit.hillforts.views.editlocation.EditLocationView
 import kotlinx.android.synthetic.main.activity_hillforts.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 class HillfortsPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -61,12 +63,23 @@ class HillfortsPresenter(view: BaseView) : BasePresenter(view) {
 
         hillfort.additionalNotes = additionalNote
 
-        if (edit) {
-            app.hillforts.update(hillfort)
-        } else {
-            app.hillforts.create(hillfort)
+//        if (edit) {
+//            app.hillforts.update(hillfort)
+//        } else {
+//            app.hillforts.create(hillfort)
+//        }
+//        view?.finish()
+
+        doAsync {
+            if (edit) {
+                app.hillforts.update(hillfort)
+            } else {
+                app.hillforts.create(hillfort)
+            }
+            uiThread {
+                view?.finish()
+            }
         }
-        view?.finish()
     }
 
     fun doCancel() {

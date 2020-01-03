@@ -2,15 +2,13 @@ package ie.wit.hillforts.views.hillfortlist
 
 import ie.wit.hillforts.activities.AccountActivity
 import ie.wit.hillforts.views.hillfortsmap.HillfortsMapsView
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.startActivityForResult
 import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
 import ie.wit.hillforts.views.BasePresenter
 import ie.wit.hillforts.views.BaseView
 import ie.wit.hillforts.views.VIEW
 import ie.wit.hillforts.views.hillfort.HillfortsView
+import org.jetbrains.anko.*
 
 class HillfortsListPresenter(view: BaseView) : BasePresenter(view) {
 
@@ -52,6 +50,12 @@ class HillfortsListPresenter(view: BaseView) : BasePresenter(view) {
     }
 
     fun loadHillforts() {
-        view?.showHillforts(app.hillforts.findSpecific())
+//        view?.showHillforts(app.hillforts.findSpecific())
+        doAsync {
+            val hillforts = app.hillforts.findSpecific()
+            uiThread {
+                view?.showHillforts(hillforts)
+            }
+        }
     }
 }
