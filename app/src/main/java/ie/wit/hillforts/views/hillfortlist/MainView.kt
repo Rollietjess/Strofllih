@@ -74,6 +74,7 @@ class MainView :  BaseView(), HillfortsListener {
 
     fun signOut(){
         FirebaseAuth.getInstance().signOut()
+//        presenter.app.hillforts.clear()
         val intentLogout = Intent(this@MainView, LoginView::class.java)
         startActivity(intentLogout)
 

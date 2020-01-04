@@ -11,13 +11,17 @@ import android.widget.DatePicker
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.GoogleMap
+import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_hillforts.*
 import kotlinx.android.synthetic.main.activity_hillforts.description
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
@@ -128,10 +132,16 @@ class HillfortsView : BaseView(), AnkoLogger {
         description.setText(hillfort.description)
         checkbox_visited.isChecked = hillfort.visited
         additionalNotes.setText(hillfort.additionalNotes)
-        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+//        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        Glide.with(this).load(hillfort.image).into(hillfortImage);
+//        lat.setText("Lat: %.6f".format(hillfort.lat))
+//        lng.setText("Lng: %.6f".format(hillfort.lng))
+        this.showLocation(hillfort.location)
+    }
 
-        lat.setText("Lat: %.6f".format(hillfort.lat))
-        lng.setText("Lng: %.6f".format(hillfort.lng))
+    override fun showLocation(location: Location) {
+        lat.setText("%.6f".format(location.lat))
+        lng.setText("%.6f".format(location.lng))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

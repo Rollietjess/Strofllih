@@ -5,9 +5,11 @@ import android.content.Intent
 import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.AnkoLogger
 
 import ie.wit.hillforts.models.HillfortsModel
+import ie.wit.hillforts.models.Location
 import ie.wit.hillforts.views.editlocation.EditLocationView
 import ie.wit.hillforts.views.hillfortsmap.HillfortsMapsView
 import ie.wit.hillforts.views.hillfort.HillfortsView
@@ -65,6 +67,7 @@ open abstract class BaseView() : AppCompatActivity(), AnkoLogger {
         basePresenter?.doRequestPermissionsResult(requestCode, permissions, grantResults)
     }
 
+    open fun showLocation(location : Location) {}
     open fun showHillfort(hillfort: HillfortsModel) {}
     open fun showHillforts(hillforts: List<HillfortsModel>) {}
     open fun showProgress() {}
