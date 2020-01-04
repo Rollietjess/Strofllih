@@ -115,6 +115,7 @@ class LoginView : AppCompatActivity() {
                         Log.e(TAG, "signInWithEmail:failure", task.exception)
                         Toast.makeText(this@LoginView, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
+                        hideProgress()
                     }
                 }
         } else {
