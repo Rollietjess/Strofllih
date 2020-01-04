@@ -66,6 +66,7 @@ class MainView :  BaseView(), HillfortsListener {
         when (item?.itemId) {
             R.id.account -> presenter.doShowAccount()
             R.id.item_map -> presenter.doShowHillfortsMap()
+            R.id.item_favourite -> presenter.doShowFavourite()
             R.id.logout_app -> { signOut()
                 return true}
         }

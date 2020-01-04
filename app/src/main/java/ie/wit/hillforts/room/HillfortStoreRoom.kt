@@ -37,6 +37,10 @@ class HillfortStoreRoom(val context: Context) : HillfortsStore {
         return dao.findById(id)
     }
 
+    override fun findFavourite(): List<HillfortsModel> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun create(hillfort: HillfortsModel) {
         dao.create(hillfort)
     }

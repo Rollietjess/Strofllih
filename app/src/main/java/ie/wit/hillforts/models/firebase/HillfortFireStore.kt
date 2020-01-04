@@ -32,6 +32,12 @@ class HillfortFireStore(val context: Context) : HillfortsStore, AnkoLogger {
         return list.toMutableList()
     }
 
+    override fun findFavourite(): List<HillfortsModel> {
+        val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
+        var list = hillforts.filter { it.userid == currentFirebaseUser!!.uid && it.favourite == true }
+        return list.toMutableList()
+    }
+
     override fun findById(id: Long): HillfortsModel? {
         val foundHillfort: HillfortsModel? = hillforts.find { p -> p.id == id }
         return foundHillfort
