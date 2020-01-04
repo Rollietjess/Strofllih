@@ -93,17 +93,17 @@ class HillfortFireStore(val context: Context) : HillfortsStore, AnkoLogger {
         db.child("users").child(userId).child("hillforts").child(hillfort.fbId).removeValue()
         hillforts.remove(hillfort)
         // Create a storage reference from our app
-        val storageRef = storage.reference
-
-        // Create a reference to the file to delete
-        val desertRef = storageRef.child("users").child(userId).child("hillforts").child(hillfort.image)
-
-        // Delete the file
-        desertRef.delete().addOnSuccessListener {
-            // File deleted successfully
-        }.addOnFailureListener {
-            // Uh-oh, an error occurred!
-        }
+//        val storageRef = storage.reference
+//
+//        // Create a reference to the file to delete
+//        val desertRef = storageRef.child("users").child(userId).child("hillforts").child(hillfort.image)
+//
+//        // Delete the file
+//        desertRef.delete().addOnSuccessListener {
+//            // File deleted successfully
+//        }.addOnFailureListener {
+//            // Uh-oh, an error occurred!
+//        }
     }
 
     override fun getTotalHillforts(): Int {

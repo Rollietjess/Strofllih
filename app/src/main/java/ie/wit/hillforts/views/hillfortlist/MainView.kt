@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import ie.wit.hillforts.LoginView
 import ie.wit.hillforts.R
@@ -43,13 +44,35 @@ class MainView :  BaseView(), HillfortsListener {
 
             presenter.doAddHillfort()
         }
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
-//        presenter = HillfortsListPresenter(this)
-//        val layoutManager = LinearLayoutManager(this)
-//        recyclerView.layoutManager = layoutManager
-//        recyclerView.adapter =
-//            HillfortAdapter(presenter.getHillforts(), this)
-//        recyclerView.adapter?.notifyDataSetChanged()
+
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_account -> {
+                    presenter.doShowAccount()
+                    true
+                }
+                R.id.navigation_all -> {
+                    presenter.doShowHillfortsMap()
+                    true
+                }
+                R.id.navigation_fave -> {
+                    presenter.doShowFavourite()
+                    true
+                }
+                R.id.navigation_logout -> {
+                    signOut()
+                    true
+                }
+
+                else -> {
+                    true
+                }
+            }
+
+        }
+
         presenter = initPresenter(HillfortsListPresenter(this)) as HillfortsListPresenter
 
         val layoutManager = LinearLayoutManager(this)
@@ -57,10 +80,10 @@ class MainView :  BaseView(), HillfortsListener {
         presenter.loadHillforts()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu_main, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
@@ -72,6 +95,7 @@ class MainView :  BaseView(), HillfortsListener {
         }
         return super.onOptionsItemSelected(item)
     }
+
 
     fun signOut(){
         FirebaseAuth.getInstance().signOut()
