@@ -24,6 +24,7 @@ data class HillfortsModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
                           var dateVisited: String = "",
                           var additionalNotes: String = "",
                           var rating: Float = 0f,
+                          var favourite: Boolean = false,
                           @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize
