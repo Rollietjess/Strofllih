@@ -62,7 +62,7 @@ class HillfortsView : BaseView(), AnkoLogger {
 
 
         fab_save.setOnClickListener {
-            info("rating: " + ratingBar.rating)
+//            info("star: " + toggleButtonDrawable.isChecked)
             if (placemarkTitle.text.toString().isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
@@ -72,7 +72,8 @@ class HillfortsView : BaseView(), AnkoLogger {
                     checkbox_visited.isChecked,
                     text_view_date_1.text.toString(),
                     additionalNotes.text.toString(),
-                    ratingBar.rating
+                    ratingBar.rating,
+                    toggleButtonDrawable.isChecked
                 )
             }
         }
@@ -136,6 +137,7 @@ class HillfortsView : BaseView(), AnkoLogger {
         checkbox_visited.isChecked = hillfort.visited
         additionalNotes.setText(hillfort.additionalNotes)
         ratingBar.rating = hillfort.rating
+        toggleButtonDrawable.isChecked = hillfort.favourite
 //        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
         Glide.with(this).load(hillfort.image).into(hillfortImage);
 //        lat.setText("Lat: %.6f".format(hillfort.lat))

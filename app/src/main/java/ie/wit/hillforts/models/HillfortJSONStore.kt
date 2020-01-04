@@ -111,6 +111,10 @@ class HillfortJSONStore : HillfortsStore, AnkoLogger {
         return foundHillfort
     }
 
+    override fun findFavourite(): List<HillfortsModel> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun clear() {
         hillforts.clear()
     }

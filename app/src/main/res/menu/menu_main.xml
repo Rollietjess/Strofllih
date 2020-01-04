@@ -10,9 +10,14 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/item_map"
+    android:id="@+id/item_map"
+    android:orderInCategory="100"
+    android:title="@string/all_hillforts"
+    app:showAsAction="never" />
+    <item
+        android:id="@+id/item_favourite"
         android:orderInCategory="100"
-        android:title="@string/all_hillforts"
+        android:title="Favourites"
         app:showAsAction="never" />
 
     <item

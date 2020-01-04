@@ -49,6 +49,10 @@ class HillfortsListPresenter(view: BaseView) : BasePresenter(view) {
         view?.navigateTo(VIEW.MAPS)
     }
 
+    fun doShowFavourite() {
+        view?.navigateTo(VIEW.FAVOURITE)
+    }
+
     fun loadHillforts() {
 //        view?.showHillforts(app.hillforts.findSpecific())
         doAsync {
