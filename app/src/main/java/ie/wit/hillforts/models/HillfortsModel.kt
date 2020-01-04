@@ -1,12 +1,15 @@
 package ie.wit.hillforts.models
 
 import android.os.Parcelable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
-import java.time.LocalDate
-import java.util.*
 
 @Parcelize
-data class HillfortsModel(var id: Long = 0,
+@Entity
+data class HillfortsModel(@PrimaryKey(autoGenerate = true) var id: Long = 0,
+                          var fbId : String = "",
                           var userid: String = "",
                           var title: String = "",
                           var description: String = "",
@@ -14,12 +17,15 @@ data class HillfortsModel(var id: Long = 0,
                           var image1: String = "",
                           var image2: String = "",
                           var image3: String = "",
-                          var lat : Double = 0.0,
-                          var lng: Double = 0.0,
-                          var zoom: Float = 0f,
+//                          var lat : Double = 0.0,
+//                          var lng: Double = 0.0,
+//                          var zoom: Float = 0f,
                           var visited: Boolean = false,
                           var dateVisited: String = "",
-                          var additionalNotes: String = "") : Parcelable
+                          var additionalNotes: String = "",
+                          var rating: Float = 0f,
+                          var favourite: Boolean = false,
+                          @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize
 data class Location(var lat: Double = 0.0,

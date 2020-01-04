@@ -13,9 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import ie.wit.hillforts.main.MainActivity
 
-class CreateAccountActivity : AppCompatActivity() {
+class CreateAccountView : AppCompatActivity() {
     //UI elements
     private var etFirstName: EditText? = null
     private var etLastName: EditText? = null
@@ -29,7 +28,7 @@ class CreateAccountActivity : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
-    private val TAG = "CreateAccountActivity"
+    private val TAG = "CreateAccountView"
     //global variables
     private var firstName: String? = null
     private var lastName: String? = null
@@ -50,7 +49,7 @@ class CreateAccountActivity : AppCompatActivity() {
         btnCreateAccount = findViewById<View>(R.id.btn_register) as Button
         mProgressBar = ProgressBar(this)
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase!!.reference!!.child("users")
         mAuth = FirebaseAuth.getInstance()
         btnCreateAccount!!.setOnClickListener { createNewAccount() }
     }
@@ -84,7 +83,7 @@ class CreateAccountActivity : AppCompatActivity() {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "createUserWithEmail:failure", task.exception)
                         Toast.makeText(
-                            this@CreateAccountActivity, "Authentication failed.",
+                            this@CreateAccountView, "Authentication failed.",
                             Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -97,10 +96,10 @@ class CreateAccountActivity : AppCompatActivity() {
     private fun updateUserInfoAndUI() {
         //start next activity
         Toast.makeText(
-            this@CreateAccountActivity, "Account successfully created. You can now log in.",
+            this@CreateAccountView, "Account successfully created. You can now log in.",
             Toast.LENGTH_SHORT
         ).show()
-        val intent = Intent(this@CreateAccountActivity, LoginActivity::class.java)
+        val intent = Intent(this@CreateAccountView, LoginView::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
     }

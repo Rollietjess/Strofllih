@@ -27,6 +27,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <ToggleButton
+                    android:id="@+id/toggleButtonDrawable"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/toggle_drawable"
+                    android:checked="false"
+                    android:textOff=""
+                    android:textOn="" />
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -85,6 +94,7 @@
                         android:text="Change Date" />
                 </RelativeLayout>
 
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
@@ -99,6 +109,29 @@
                         android:inputType="textMultiLine"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentTop="true">
+
+                    <TextView
+                        android:id="@+id/rating_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:text="Rating"
+                        android:textSize="19dp" />
+
+                    <RatingBar
+                        android:id="@+id/ratingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="37dp"
+                        android:layout_toEndOf="@+id/rating_text"
+                        android:stepSize="0.5" />
+                </RelativeLayout>
 
                 <Button
                     android:id="@+id/chooseImage"
@@ -117,52 +150,85 @@
                     android:padding="8dp"
                     app:srcCompat="@mipmap/ic_launcher" />
 
-                <RelativeLayout
-                    android:id="@+id/extra_images"
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/extra_images"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_alignParentTop="true">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/hillfortImage1"-->
+<!--                        android:layout_width="110dp"-->
+<!--                        android:layout_height="110dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:padding="8dp"-->
+<!--                        app:srcCompat="@mipmap/ic_launcher" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/hillfortImage2"-->
+<!--                        android:layout_width="110dp"-->
+<!--                        android:layout_height="110dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_toRightOf="@id/hillfortImage1"-->
+<!--                        android:padding="8dp"-->
+<!--                        app:srcCompat="@mipmap/ic_launcher" />-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/hillfortImage3"-->
+<!--                        android:layout_width="110dp"-->
+<!--                        android:layout_height="110dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_toRightOf="@id/hillfortImage2"-->
+<!--                        android:padding="8dp"-->
+<!--                        app:srcCompat="@mipmap/ic_launcher" />-->
+<!--                </RelativeLayout>-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/hillfortLocation"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:background="@color/secondaryColor"-->
+<!--                    android:stateListAnimator="@null"-->
+<!--                    android:text="@string/button_location"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapViewLocation"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true">
+                    android:layout_height="202dp" />
 
-                    <ImageView
-                        android:id="@+id/hillfortImage1"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="10dp"
-                        android:padding="8dp"
-                        app:srcCompat="@mipmap/ic_launcher" />
-
-                    <ImageView
-                        android:id="@+id/hillfortImage2"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@id/hillfortImage1"
-                        android:padding="8dp"
-                        app:srcCompat="@mipmap/ic_launcher" />
-
-                    <ImageView
-                        android:id="@+id/hillfortImage3"
-                        android:layout_width="110dp"
-                        android:layout_height="110dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_toRightOf="@id/hillfortImage2"
-                        android:padding="8dp"
-                        app:srcCompat="@mipmap/ic_launcher" />
-                </RelativeLayout>
-
-                <Button
-                    android:id="@+id/hillfortLocation"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/secondaryColor"
-                    android:stateListAnimator="@null"
-                    android:text="@string/button_location"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/lng"
+                        android:layout_width="127dp"
+                        android:layout_height="19dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Lng: 00.000000"
+                        app:layout_constraintStart_toEndOf="@+id/lat"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/lat"
+                        android:layout_width="146dp"
+                        android:layout_height="19dp"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="228dp"
+                        android:text="Lat: 00.000000"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <!--                <Button-->
                 <!--                    android:id="@+id/btnAdd"-->

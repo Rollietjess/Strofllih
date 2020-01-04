@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.splash_screen.*
 
@@ -24,9 +23,9 @@ class SplashScreen : AppCompatActivity() {
 
 
         val SPLASH_TIME_OUT = 2000
-//        val homeIntent = Intent(this@SplashScreen, MainActivity::class.java)
-//        val homeIntent = Intent(this@SplashScreen, CreateAccountActivity::class.java)
-        val homeIntent = Intent(this@SplashScreen, LoginActivity::class.java)
+//        val homeIntent = Intent(this@SplashScreen, MainView::class.java)
+//        val homeIntent = Intent(this@SplashScreen, CreateAccountView::class.java)
+        val homeIntent = Intent(this@SplashScreen, LoginView::class.java)
 
         Handler().postDelayed({
             //Do some stuff here, like implement deep linking

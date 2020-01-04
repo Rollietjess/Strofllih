@@ -1,9 +1,10 @@
-package ie.wit.hillforts.activities
+package ie.wit.hillforts.views.hillfortlist
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ie.wit.hillforts.R
 import ie.wit.hillforts.helpers.readImageFromPath
 import ie.wit.hillforts.models.HillfortsModel
@@ -14,7 +15,8 @@ interface HillfortsListener {
 }
 
 class HillfortAdapter constructor(private var hillforts: List<HillfortsModel>,
-                                   private val listener: HillfortsListener) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
+                                   private val listener: HillfortsListener
+) : RecyclerView.Adapter<HillfortAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -41,7 +43,8 @@ class HillfortAdapter constructor(private var hillforts: List<HillfortsModel>,
             if(hillfort.dateVisited != ""){
                 itemView.date_visited.text = hillfort.dateVisited
             }
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
+//            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, hillfort.image))
+            Glide.with(itemView.context).load(hillfort.image).into(itemView.imageIcon);
             itemView.setOnClickListener { listener.onHillfortsClick(hillfort) }
         }
     }

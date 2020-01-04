@@ -42,7 +42,7 @@ class AccountActivity : AppCompatActivity(), AnkoLogger {
 
     private fun initialise() {
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase!!.reference!!.child("users")
         mAuth = FirebaseAuth.getInstance()
         tvFirstName = findViewById<View>(R.id.tv_first_name) as TextView
         tvEmail = findViewById<View>(R.id.tv_email) as TextView
