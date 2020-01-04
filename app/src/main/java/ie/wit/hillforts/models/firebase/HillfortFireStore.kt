@@ -63,6 +63,7 @@ class HillfortFireStore(val context: Context) : HillfortsStore, AnkoLogger {
 //            foundHillfort.zoom = hillfort.
             foundHillfort.location = hillfort.location
             foundHillfort.visited = hillfort.visited
+            foundHillfort.rating = hillfort.rating
 
             foundHillfort.additionalNotes = hillfort.additionalNotes
 

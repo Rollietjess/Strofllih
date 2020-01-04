@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.activity_hillforts.*
 import kotlinx.android.synthetic.main.activity_hillforts.description
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
 import java.util.*
@@ -61,6 +62,7 @@ class HillfortsView : BaseView(), AnkoLogger {
 
 
         fab_save.setOnClickListener {
+            info("rating: " + ratingBar.rating)
             if (placemarkTitle.text.toString().isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
@@ -69,7 +71,8 @@ class HillfortsView : BaseView(), AnkoLogger {
                     description.text.toString(),
                     checkbox_visited.isChecked,
                     text_view_date_1.text.toString(),
-                    additionalNotes.text.toString()
+                    additionalNotes.text.toString(),
+                    ratingBar.rating
                 )
             }
         }
@@ -132,6 +135,7 @@ class HillfortsView : BaseView(), AnkoLogger {
         description.setText(hillfort.description)
         checkbox_visited.isChecked = hillfort.visited
         additionalNotes.setText(hillfort.additionalNotes)
+        ratingBar.rating = hillfort.rating
 //        hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
         Glide.with(this).load(hillfort.image).into(hillfortImage);
 //        lat.setText("Lat: %.6f".format(hillfort.lat))

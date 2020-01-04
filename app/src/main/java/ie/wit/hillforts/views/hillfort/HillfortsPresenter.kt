@@ -52,7 +52,7 @@ class HillfortsPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
-    fun doAddOrSave(title: String, description: String, visited: Boolean, text_date: String, additionalNote: String) {
+    fun doAddOrSave(title: String, description: String, visited: Boolean, text_date: String, additionalNote: String, rating: Float) {
         hillfort.title = title
         hillfort.description = description
         hillfort.visited = visited
@@ -62,6 +62,7 @@ class HillfortsPresenter(view: BaseView) : BasePresenter(view) {
         }
 
         hillfort.additionalNotes = additionalNote
+        hillfort.rating = rating
 
 //        if (edit) {
 //            app.hillforts.update(hillfort)
