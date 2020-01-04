@@ -5,7 +5,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import ie.wit.hillforts.main.MainApp
 import ie.wit.hillforts.models.HillfortsModel
 import ie.wit.hillforts.views.BasePresenter
 import ie.wit.hillforts.views.BaseView
@@ -24,24 +23,21 @@ class HillfortsMapsPresenter(view: BaseView) : BasePresenter(view) {
         }
     }
 
+
     fun doMarkerSelected(marker: Marker) {
-//        val tag = marker.tag as Long
-//        val hillfort = app.hillforts.findById(tag)
-//        if (hillfort != null) view?.showHillfort(hillfort)
+        val tag = marker.tag as Long
         doAsync {
-//            val hillfort = app.hillforts.findById(tag)
-            val hillfort = marker.tag as HillfortsModel
+            val hillfort = app.hillforts.findById(tag)
             uiThread {
                 if (hillfort != null) view?.showHillfort(hillfort)
             }
         }
-
     }
 
     fun loadHillforts() {
 //        view?.showHillforts(app.hillforts.findSpecific())
         doAsync {
-            val hillforts = app.hillforts.findAll()
+            val hillforts = app.hillforts.findSpecific()
             uiThread {
                 view?.showHillforts(hillforts)
             }
