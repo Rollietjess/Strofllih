@@ -49,7 +49,7 @@ class CreateAccountView : AppCompatActivity() {
         btnCreateAccount = findViewById<View>(R.id.btn_register) as Button
         mProgressBar = ProgressBar(this)
         mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference!!.child("Users")
+        mDatabaseReference = mDatabase!!.reference!!.child("users")
         mAuth = FirebaseAuth.getInstance()
         btnCreateAccount!!.setOnClickListener { createNewAccount() }
     }
