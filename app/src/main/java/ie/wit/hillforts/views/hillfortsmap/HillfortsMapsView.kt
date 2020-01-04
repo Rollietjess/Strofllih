@@ -11,6 +11,7 @@ import ie.wit.hillforts.models.HillfortsModel
 import ie.wit.hillforts.views.BaseView
 import kotlinx.android.synthetic.main.activity_hillforts_maps.*
 import kotlinx.android.synthetic.main.content_hillforts_maps.*
+import org.jetbrains.anko.info
 
 class HillfortsMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
 
@@ -33,6 +34,7 @@ class HillfortsMapsView : BaseView(), GoogleMap.OnMarkerClickListener {
     }
 
     override fun showHillfort(hillfort: HillfortsModel) {
+        info("clickMarker?")
         currentTitle.text = hillfort.title
         currentDescription.text = hillfort.description
 //        currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))

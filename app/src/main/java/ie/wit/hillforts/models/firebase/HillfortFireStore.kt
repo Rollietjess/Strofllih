@@ -49,6 +49,7 @@ class HillfortFireStore(val context: Context) : HillfortsStore, AnkoLogger {
             hillfort.fbId = key
             val currentFirebaseUser = FirebaseAuth.getInstance().currentUser
             hillfort.userid = currentFirebaseUser!!.uid
+            hillfort.id = generateRandomId()
             hillforts.add(hillfort)
             db.child("users").child(userId).child("hillforts").child(key).setValue(hillfort)
             updateImage(hillfort)
